@@ -7,4 +7,8 @@ class Library(models.Model):
   bookborrowed =models.CharField( max_length=150, unique =   True)
   returned = models.BooleanField(default=False)
 
+  def __str__(self):
+      return self.student.name
+  
+
 # Create your models here.

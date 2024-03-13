@@ -5,6 +5,13 @@ from student.models import Student
 class Activity(models.Model):
    activityname=models.CharField( max_length=150, unique =   True)
    Student = models.ForeignKey(Student ,  on_delete=models.CASCADE)
+   def __str__(self) -> str:
+          return self.activityname
+            
+   
+
+        
+                       
 
 
 class Disciplinary(models.Model):

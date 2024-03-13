@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import Activity, Disciplinary, Damages, Hostel, Games
+from .models import Activity, Disciplinary, Damages, Hostel, Games
 
 class ActivitySerializer(serializers.ModelSerializer):
     class Meta:

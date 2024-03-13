@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import Library
+from .models import Library
 
 class LibrarySerializer(serializers.ModelSerializer):
     class Meta:

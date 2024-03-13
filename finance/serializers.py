@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import Finance
+from .models import Finance
 
 class FinanceSerializer(serializers.ModelSerializer):
     class Meta:
