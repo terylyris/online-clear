@@ -1,0 +1,6 @@
+services:
+  - name: web
+    envVArs:
+      DJANGO_SETTINGS_MODULE: "onlineclear.settings"
+    buildCommand: python manage.py migrate
+    startCommand: gunicorn mysite.asgi:application -b 0.0.0:$PORT    

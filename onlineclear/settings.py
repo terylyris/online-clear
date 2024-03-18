@@ -78,11 +78,16 @@ WSGI_APPLICATION = 'onlineclear.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+# postgresql://onlineclear_owner:Xn9z7uyiCUBr@ep-tight-feather-a5mgxt0j.us-east-2.aws.neon.tech/onlineclear?sslmode=require
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'onlineclear',
+        'USER': 'onlineclear_owner',
+        'PASSWORD': 'Xn9z7uyiCUBr',
+        'HOST': 'ep-tight-feather-a5mgxt0j.us-east-2.aws.neon.tech',  # Or the IP address where your PostgreSQL server is hosted
+        'PORT': '5432', 
     }
 }
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-
+from .serializers import StudentSerializer
 
 from .models import Results,UnitsDone,Course,Student
 
@@ -27,5 +27,20 @@ def check_units(req,id):
         return Response({"clear":True})
     else:
         return Response({"clear":False})
+
+@api_view(['POST'])
+def login(request):
+    regno = request.POST.get('regno')
+    password = request.POST.get('password')
+    try:
+        student = Student.objects.get(regNo=regno)
+        if student.password == password:
+            serializer = StudentSerializer(student)
+            return Response(serializer.data)
+        else:
+            return Response({"message":"Wrong PAssword"})
+    except student.DoesNotExist:
+        return Response({'message':"Wrong Registration number"})
+
 
 
