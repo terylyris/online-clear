@@ -29,10 +29,10 @@ class Student(models.Model):
     regNo = models.CharField( max_length=150, unique = True)
     name = models.CharField( max_length=150 )
     course = models.ForeignKey(Course ,  on_delete=models.CASCADE)
-    password = models.CharField( max_length=150)
+    password = models.CharField( max_length=150,default='password')
 
     def __str__(self) -> str:
-        return self.name
+        return self.regNo
 
 
 class UnitsDone(models.Model):
