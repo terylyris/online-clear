@@ -5,8 +5,8 @@ from .views import damagescaused
 
 
 urlpatterns = [
-    path('disciplinary/<str:reg_no>/',disciplinary_records,name="case"),
-    path('activities/<str:reg_no>/',activity_done,name="case"),
-    path('damages/<str:reg_no>/',damagescaused,name="case"),
+    path('disciplinary/<str:id>/',disciplinary_records,name="case"),
+    path('activities/<str:id>/',activity_done,name="case"),
+    path('damages/<str:id>/',damagescaused,name="case"),
 ]
 

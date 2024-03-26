@@ -2,8 +2,27 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializers import StudentSerializer
+from rest_framework import status
 
 from .models import Results,UnitsDone,Course,Student
+from .checkalldepartments import checkFaculty,checkLibrary,checkFinance,checkStudentAffairs
+
+@api_view()
+def checkStatus(req,id):
+    faculty = checkFaculty(id)
+    library = checkLibrary(id)
+    student_affairs = checkStudentAffairs(id)
+    finance = checkFinance(id)
+    response = {
+        "faculty": faculty,
+        "library":library,
+        "studentaffairs":student_affairs,
+        "finance":finance
+    }
+    return Response(response)
+    
+
+
 
 @api_view()
 def check_passmark(request,id):
@@ -32,15 +51,17 @@ def check_units(req,id):
 def login(request):
     regno = request.POST.get('regno')
     password = request.POST.get('password')
+    print(request.POST)
+    print(password)
     try:
         student = Student.objects.get(regNo=regno)
         if student.password == password:
             serializer = StudentSerializer(student)
-            return Response(serializer.data)
+            return Response(serializer.data,status=status.HTTP_200_OK)
         else:
-            return Response({"message":"Wrong PAssword"})
+            return Response({"message":"Wrong PAssword"},status=status.HTTP_401_UNAUTHORIZED)
     except Student.DoesNotExist:
-        return Response({'message':"Wrong Registration number"})
+        return Response({'message':"Wrong Registration number"},status=status.HTTP_401_UNAUTHORIZED)
 
 
 

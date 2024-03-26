@@ -11,7 +11,15 @@ from .serializers import ActivitySerializer
 def disciplinary_records(request,id):
     case = Disciplinary.objects.filter(student__pk = id)
     student = Student.objects.get(pk=id)
-    if case.case:
+    unresolved = 0
+    for c in case:
+        if not c.resolved:
+            uresolved += 1
+        else:
+            continue
+
+    print(unresolved)
+    if unresolved  > 0:
         return Response({"clear":False})
     else:
         return Response({"clear":True})
