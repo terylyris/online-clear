@@ -39,7 +39,7 @@ def login(request):
             return Response(serializer.data)
         else:
             return Response({"message":"Wrong PAssword"})
-    except student.DoesNotExist:
+    except Student.DoesNotExist:
         return Response({'message':"Wrong Registration number"})
 
 
