@@ -53,7 +53,7 @@ def checkStudentAffairs(id):
     unresolved = 0
     for c in case:
         if not c.resolved:
-            uresolved += 1
+            unresolved += 1
         else:
             continue
 
