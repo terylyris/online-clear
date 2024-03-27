@@ -1,6 +1,8 @@
 from django.contrib import admin
 
 
+
+
 from .models import School, Department, Course, Student, UnitsDone, Results
 class SchoolAdmin(admin.ModelAdmin):
     list_display = ['name',]
@@ -15,6 +17,10 @@ class UnitsDoneAdmin(admin.ModelAdmin):
 class ResultsAdmin(admin.ModelAdmin):
     list_display = ['student','marks',]
 
+
+admin.site.site_title = "Online Clear"
+admin.site.index_title = "Online Clear"
+admin.site.site_header = "online clear"
 
 
 admin.site.register(School)
